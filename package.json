@@ -1,0 +1,23 @@
+{
+  "name": "cfdi-excel",
+  "version": "1.0.0",
+  "description": "Obtiene la informacion de todos los CFDI en un directorio y la recopila en un archivo de excel.",
+  "main": "main.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noeldap93/CFDI-Excel.git"
+  },
+  "keywords": [
+    "CFDI",
+    "Excel"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/noeldap93/CFDI-Excel/issues"
+  },
+  "homepage": "https://github.com/noeldap93/CFDI-Excel#readme"
+}
