@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/noeldap93/CFDI-Excel/issues"
   },
-  "homepage": "https://github.com/noeldap93/CFDI-Excel#readme"
+  "homepage": "https://github.com/noeldap93/CFDI-Excel#readme",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.1.0"
+  }
 }
