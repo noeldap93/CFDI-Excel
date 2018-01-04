@@ -18,6 +18,6 @@ describe("Read Files", () => {
         loadFileList(FILE_PATH , FILE_TYPE).then((fileList)=>{
             expect(fileList.sort()).to.deep.equal( CORRECT_FILE_LIST.sort() );
             done();
-         });
+         }).catch(done);
     })
 });

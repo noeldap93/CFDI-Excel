@@ -12,6 +12,8 @@ function fileListFiltered(PATH, FILETYPE) {
   let promise = new Promise((resolve,reject)=>{
     
     ls(PATH, (err, fileList) => {
+      if(err) return reject(err);
+      
       let filteredFileList = fileList.filter((fileName) => {
         return path.extname(fileName) === FILETYPE
       });
