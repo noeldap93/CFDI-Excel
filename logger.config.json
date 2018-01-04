@@ -1,0 +1,10 @@
+{
+  "appenders": { 
+    "main": { "type": "file", "filename": "output.log" },
+    "emergencies": {  "type": "file", "filename": "error.log" },
+    "errors": { "type": "logLevelFilter", "appender": "emergencies", "level": "error" }
+  },
+  "categories": { 
+      "default": { "appenders": ["main", "errors"], "level": "error" } 
+    }
+}
