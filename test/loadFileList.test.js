@@ -1,3 +1,5 @@
+const getLogger = require('../src/logger');
+const log = getLogger("loadFileList");
 let expect = require("chai").expect;
 let loadFileList = require('../src/loadFileList.js').fileListFiltered;
 let arr = [];
