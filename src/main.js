@@ -1,3 +1,5 @@
+const getLogger = require('./logger');
+
 let xmlFileList = require("xmlFileList")
 let path="./ruta";
 let outFile="./ruta";
