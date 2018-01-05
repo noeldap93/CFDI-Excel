@@ -10,15 +10,23 @@ describe("CFDI Parser", () => {
     });
 
     describe("Return the correct values.", () => {
-        it("Must return correct CFDI:Comprobante values", () => {
+        it("Should return correct CFDI:Comprobante values", () => {
             expect(cfdiParser.get("FECHA")).to.equal("2017-01-09T21:50:16");
             expect(cfdiParser.get("SUBTOTAL")).to.equal("92.71");
             expect(cfdiParser.get("DESCUENTO")).to.equal("0");
-            expect(cfdiParser.get("load")).to.equal("");
+            
         })
-        it("Must return correct CFDI:Emisor values", () => {
+        it("Should return correct CFDI:Emisor values", () => {
             expect(cfdiParser.get("RFC_EMISOR")).to.equal("CCO8605231N4");
             expect(cfdiParser.get("NOMBRE_EMISOR")).to.equal("CADENA COMERCIAL OXXO, S.A. DE C.V.");
+        })
+        it("Should not access private methods", () => {
+            expect(cfdiParser.get("load")).to.equal("");
+            
+        })
+        it("Should not access unexistent methods", () => {
+            expect(cfdiParser.get("unexistent")).to.equal("");
+            
         })
     })
 
