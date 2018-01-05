@@ -1,8 +1,12 @@
 let parseString = require("xml2js").parseString;
-let fs = require("fs");
-class CFDI {
+
+class CFDIParser {
     constructor() {
-        this.gResult;
+        this.comprobanteNodo;
+        this.comprobante;
+        this.emisor;
+        this.receptor;
+        this.impuestos;
     }
 
     load(CFDItext) {
@@ -11,80 +15,38 @@ class CFDI {
                 console.log("Error", error);
                 return;
             }
-            gResult = result["cfdi:Comprobante"];
-            content = gResult.$;
+            this.comprobanteNodo = result["cfdi:Comprobante"];
+            this.comprobante = this.comprobanteNodo.$;
+            this.emisor = this.comprobanteNodo["cfdi:Emisor"][0].$;
+            this.receptor = this.comprobanteNodo["cfdi:Receptor"][0].$;
+            this.impuestos = this.comprobanteNodo["cfdi:Impuestos"][0].$;
         });
     }
-        getFecha() {
-            let defineFecha = content.fecha;
-            return (defineFecha);
-        }
-        getSubtotal() {
-            let defineSubtotal = content.subTotal;
-            return (defineSubtotal);
-        }
-        getTotal() {
-            let defineTotal = content.total;
-            return (defineTotal);
-        }
-        getDescuento() {
-            let defineDescuento = content.descuento || "0";
-            return (defineDescuento);
-        }
-        getFormapago() {
-            let defineFormadepago = content.formaDePago;
-            return (defineFormadepago);
-        }
-        getMetodopago() {
-            let defineMetodopago = content.metodoDePago;
-            return (defineMetodopago);
-        }
-        getFolio() {
-            let defineFolio = content.folio;
-            return (defineFolio);
-        }
-        getNcuenta() {
-            let defineNcuenta = content.NumCtaPago || "Na";
-            return (defineNcuenta);
-        }
-        let emisordata = gResult["cfdi:Emisor"][0].$;
-        getnombreEmisor() {
-            let nombreEmisor = emisordata.nombre;
-            return (nombreEmisor);
-        }
-        getRfcEmisor() {
-            let rfcEmisor = emisordata.rfc;
-            return (rfcEmisor);
-        }
-        let receptordata = gResult["cfdi:Receptor"][0].$;
-        getnombreReceptor() {
-            let nombreReceptor = receptordata.nombre;
-            return (nombreReceptor);
-        }
-        getRfcReceptor() {
-            let rfcReceptor = receptordata.rfc;
-            return (rfcReceptor);
-        }
-        let impuestos = gResult["cfdi:Impuestos"][0].$
-        getImpTraslados() {
-            let impTraslados = impuestos.totalImpuestosTrasladados;
-            return (impTraslados);
-        }
-        module.exports = {
-            fecha: getFecha(),
-            subtotal: getSubtotal(),
-            total: getTotal(),
-            descuento: getDescuento(),
-            formapago: getFormapago(),
-            metodopago: getMetodopago(),
-            folio: getFolio(),
-            ncuenta: getNcuenta(),
-            nombreemisor: getnombreEmisor(),
-            rfcemisor: getRfcEmisor(),
-            nombrereceptor: getnombreReceptor(),
-            rfcreceptor: getRfcReceptor(),
-            impuestos: getImpTraslados()
 
-        };
+    _GET_FECHA() {
+        return this.comprobante.fecha;
     }
+    _GET_SUBTOTAL() {
+        return this.comprobante.subTotal;
+    }
+    _GET_TOTAL() {
+        return this.comprobante.total;
+    }
+    _GET_DESCUENTO() {
+        return this.comprobante.descuento || "0";
+    }
+    _GET_NOMBRE_EMISOR() {
+        return this.emisor.nombre;
+
+    }
+    _GET_RFC_EMISOR() {
+        return this.emisor.rfc;
+    }
+    get(campoDelCFDI) {
+        let valorCampo = this["_GET_" + campoDelCFDI ]();
+        
+        return valorCampo;
+    }
+
 }
+module.exports.CFDIParser = CFDIParser;
