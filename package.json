@@ -22,7 +22,10 @@
   "homepage": "https://github.com/noeldap93/CFDI-Excel#readme",
   "dependencies": {
     "chai": "^4.1.2",
-    "mocha": "^4.1.0",
-    "xml2js": "^0.4.19"
+    "xml2js": "^0.4.19",
+    "file-extension": "^4.0.1",
+    "list-directory-contents": "0.0.3",
+    "log4js": "^2.4.1",
+    "mocha": "^4.1.0"
   }
 }

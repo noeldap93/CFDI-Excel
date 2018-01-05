@@ -58,4 +58,9 @@ typings/
 # dotenv environment variables file
 .env
 
+#Configuracion del proyecto de vscode
 .vscode
+
+# Logs y su configuracion local.
+*.log
+logger.levels.json
