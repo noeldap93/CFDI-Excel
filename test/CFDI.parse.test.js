@@ -14,7 +14,7 @@ describe("CFDI Parser", () => {
             expect(cfdiParser.get("FECHA")).to.equal("2017-01-09T21:50:16");
             expect(cfdiParser.get("SUBTOTAL")).to.equal("92.71");
             expect(cfdiParser.get("DESCUENTO")).to.equal("0");
-            expect(cfdiParser.get("load")).to.equal("0");
+            expect(cfdiParser.get("load")).to.equal("");
         })
         it("Must return correct CFDI:Emisor values", () => {
             expect(cfdiParser.get("RFC_EMISOR")).to.equal("CCO8605231N4");

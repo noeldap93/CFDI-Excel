@@ -42,10 +42,14 @@ class CFDIParser {
     _GET_RFC_EMISOR() {
         return this.emisor.rfc;
     }
-    get(campoDelCFDI) {
-        let valorCampo = this["_GET_" + campoDelCFDI ]();
-        
-        return valorCampo;
+    get(CFDIField) {
+
+        if (!this["_GET_" + CFDIField]) {
+            return "";
+        }
+        let fieldValue = this["_GET_" + CFDIField]();
+        return fieldValue;
+
     }
 
 }
