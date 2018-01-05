@@ -1,5 +1,6 @@
 let parseString = require("xml2js").parseString;
-
+const getLogger = require('./logger');
+const log = getLogger("CFDI.parse");
 class CFDIParser {
     constructor() {
         this.comprobanteNodo;
@@ -12,7 +13,7 @@ class CFDIParser {
     load(CFDItext) {
         parseString(CFDItext, (error, result) => {
             if (error) {
-                console.log("Error", error);
+                log.error("Error al parseString", error);
                 return;
             }
             this.comprobanteNodo = result["cfdi:Comprobante"];
@@ -20,6 +21,11 @@ class CFDIParser {
             this.emisor = this.comprobanteNodo["cfdi:Emisor"][0].$;
             this.receptor = this.comprobanteNodo["cfdi:Receptor"][0].$;
             this.impuestos = this.comprobanteNodo["cfdi:Impuestos"][0].$;
+            log.debug("comprobanteNodo",this.comprobanteNodo);
+            log.debug("comprobante",this.comprobante);
+            log.debug("emisor",this.emisor);
+            log.debug("receptor",this.receptor);
+            log.debug("impuestos",this.impuestos);
         });
     }
 
