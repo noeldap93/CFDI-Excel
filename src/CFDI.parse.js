@@ -41,12 +41,39 @@ class CFDIParser {
     _GET_DESCUENTO() {
         return this.comprobante.descuento || "0";
     }
+    _GET_FORMA_PAGO() {
+        return this.comprobante.formaDePago;
+    }
+    _GET_METODO_PAGO() {
+        return this.comprobante.metodoDePago ;
+    }
+    _GET_FOLIO() {
+        return this.comprobante.folio;
+
+    }
+    _GET_NUM_CUENTA() {
+        return this.comprobante.NumCtaPago|| "0";
+    }
     _GET_NOMBRE_EMISOR() {
         return this.emisor.nombre;
 
     }
     _GET_RFC_EMISOR() {
         return this.emisor.rfc;
+    }
+    _GET_NOMBRE_RECEPTOR() {
+        return this.receptor.nombre;
+
+    }
+    _GET_RFC_RECEPTOR() {
+        return this.receptor.rfc;
+    }
+    _GET_IMPUESTOS_RETENIDOS() {
+        return this.impuestos.totalImpuestosRetenidos || "0";
+    }
+
+    _GET_IMPUESTOS_TRASLADADOS() {
+        return this.impuestos.totalImpuestosTrasladados || "0";
     }
     get(CFDIField) {
 
