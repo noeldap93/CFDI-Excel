@@ -8,7 +8,7 @@ log4js.configuration = logger_config;
 
 process.on('uncaughtException', function (err) {
   log4js.getLogger("uncaughtException").error(err.name, err.message, "\n", err.stack);
-  if (typeof global.it !== 'function') { // if not running mocha.
+  if (typeof global.it !== 'function') { // if not running mocha should exit.
     log4js.shutdown(function () { process.exit(1); });
   }
 });
@@ -23,8 +23,8 @@ try {
 
 
 function getLoggerLevel(name) {
-  return // retorna el primer valor que exista: 
-  process.env["DL_" + name] ||
+  // retorna el primer valor que exista: 
+  return  process.env["DL_" + name] ||
     logger_levels[name] ||
     process.env["DL_ALL"] ||
     logger_levels["ALL"];

@@ -27,7 +27,7 @@ function readFiles(){
 
 function process(fileName){
     return loadFile(fileName).then((file)=>{
-        return parseFile(file)
+        return new CFDIParser(file)
     }).then((fileParser)=>{
         return getData(fileParser)
     }).then((data)=>{
