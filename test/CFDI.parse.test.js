@@ -10,7 +10,6 @@ describe.only("CFDI Parser", () => {
     });
     describe("Check that the values are numbers",()=>{
         it("Type of should be a number",()=>{
-            //expect() .to.equal("number");
             expect(cfdiParser.get("SUBTOTAL")).to.be.a('number');
             expect(cfdiParser.get("TOTAL")).to.be.a('number');
             expect(cfdiParser.get("DESCUENTO")).to.be.a('number');
