@@ -1,5 +1,4 @@
 let fs = require("fs");
-console.log("Before");
 let FileText = './data/Headers_ex2.txt';
 
 
@@ -15,10 +14,7 @@ function readFile(file) {
     });
 
 }
-/* function getHeadersFromFile(data) {
-    return new Promise((resolve, reject) => {
-        
-    } */
+
 function getHeadersFromFile(path) {
     return readFile(path).then((data) => {
         let headers = {
