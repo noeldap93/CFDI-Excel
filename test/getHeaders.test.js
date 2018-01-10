@@ -1,19 +1,24 @@
 let fs = require("fs");
-let expect = require("chai");
+let expect = require("chai").expect;
 let getHeadersFromFile = require("../src/getHeadersFromFile");
-let fIleDirection = "./data/Header_ex1.txt";
+let fIleDirection = "./data/Headers_ex1.txt";
 
-let headerTest = ["RFC_EMISOR",
-    "FECHA",
+let headerFileTest = ["RFC_EMISOR",
+    "FECHA ordenar",
     "TOTAL"
 ]
-describe.only("The file must be sent and load without errors", () => {
+let headerTest = {
+    header: ["RFC_EMISOR", "FECHA", "TOTAL"],
+    order: { column: 1, ascendig: true }
+}
 
-    it("the direction is sent via fileDirection", () => {
+
+describe("The file must be sent and load without errors", () => {
+
+    it.only("the direction is sent via fileDirection", (done) => {
         getHeadersFromFile(fIleDirection).then((headers) => {
-            expect(headers.headers).to.deep.equal(headerTest);
-            expect(headers.order.colum).to.deep.equal(1);
-            expect(headers.order.ascending).to.deep.equal(true);
-        });
+            expect(headers).to.deep.equal(headerTest);
+            done();
+        }).catch((e)=>done(e));
     })
 });
