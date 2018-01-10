@@ -15,7 +15,7 @@ let headerTest = {
 
 describe("The file must be sent and load without errors", () => {
 
-    it.only("the direction is sent via fileDirection", (done) => {
+    it("the direction is sent via fileDirection", (done) => {
         getHeadersFromFile(fIleDirection).then((headers) => {
             expect(headers).to.deep.equal(headerTest);
             done();
