@@ -3,14 +3,13 @@ let expect = require("chai").expect;
 let CFDIParser = require("../src/CFDI.parse").CFDIParser;
 let CFDItext = fs.readFileSync('./data/oxxo.xml');
 
-describe.only("CFDI Parser", () => {
+describe("CFDI Parser", () => {
     let cfdiParser = new CFDIParser();
     it("Must load xml test without errors", () => {
         cfdiParser.load(CFDItext);
     });
     describe("Check that the values are numbers",()=>{
         it("Type of should be a number",()=>{
-            //expect() .to.equal("number");
             expect(cfdiParser.get("SUBTOTAL")).to.be.a('number');
             expect(cfdiParser.get("TOTAL")).to.be.a('number');
             expect(cfdiParser.get("DESCUENTO")).to.be.a('number');
