@@ -1,4 +1,3 @@
-
 let CFDIParser = require('./CFDI.parse').CFDIParser;
 function getRow(headers, XMLText) {
     let promise = new Promise((resolve, reject) => {

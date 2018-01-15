@@ -41,7 +41,7 @@ function processFileList(fileList) {
         log.trace("Starting process with:", file);
         return fileUtils.readFile(file).then(dataFile => {
             log.trace("Finished file read:", file, "size:", dataFile.length);
-            return getRow(Headers, dataFile);
+            return getRow(Headers.headers, dataFile);
         }, (e) => { log.warn(e); }).then(row => {
             log.trace("Finished parsing row:", file, "data:", row);
             xlsxGen.add(row);
