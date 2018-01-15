@@ -3,7 +3,7 @@ let expect = require("chai").expect;
 let CFDIParser = require("../src/CFDI.parse").CFDIParser;
 let CFDItext = fs.readFileSync('./data/oxxo.xml');
 
-describe.only("CFDI Parser", () => {
+describe("CFDI Parser", () => {
     let cfdiParser = new CFDIParser();
     it("Must load xml test without errors", () => {
         cfdiParser.load(CFDItext);
