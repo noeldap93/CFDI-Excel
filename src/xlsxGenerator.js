@@ -33,7 +33,7 @@ class xlsxGenerator {
 
             for (let j = 1; j <= columnsByHeaders; j++) {
                 for (let i = 1; i <= rowsByAddedFile; i++) {
-                    sheet1.set(j, i, this.getRows()[i - 1][j - 1]);
+                 sheet1.set(j, i, this.getRows()[i - 1][j - 1]);
                 }
             }
 

@@ -5,6 +5,6 @@
     "errors": { "type": "logLevelFilter", "appender": "emergencies", "level": "error" }
   },
   "categories": { 
-      "default": { "appenders": ["main", "errors"], "level": "error" } 
+      "default": { "appenders": ["main", "errors"], "level": "warn" } 
     }
 }
