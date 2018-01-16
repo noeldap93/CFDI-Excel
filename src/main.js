@@ -1,22 +1,28 @@
 const getLogger = require('./logger');
 const log = getLogger('main');
-const FILESPATH = './test/data';
+const FILES_PATH_DEFAULT = './test/data';
 const FILETYPE = '.xml';
-const HEADERSPATH = './test/data/Headers_ex2.txt'
-const XLSXFILENAME = 'excel.xlsx'
-const CFDIparse = require('./CFDI.parse');
+const HEADERS_PATH_DEFAULT = './headers.txt'
+const XLSX_FILE_NAME_DAFAULT = 'output.xlsx'
+
+let CFDIparse = require('./CFDI.parse.js');
 let fileUtils = require('./fileUtils.js');
 let getHeadersFromFile = require('./getHeadersFromFile.js');
 let xlsxGenerator = require('./xlsxGenerator').xlsxGenerator;
 let Headers;
 let xlsxGen;
 
-function start() {
-    getHeadersFromFile(HEADERSPATH).then(headers => {
+function start(filesPath, headersPath, XLSXFilename) {
+
+    filesPath = filesPath || FILES_PATH_DEFAULT;
+    headersPath = headersPath || HEADERS_PATH_DEFAULT;
+    XLSXFilename = XLSXFilename || XLSX_FILE_NAME_DAFAULT;
+
+    getHeadersFromFile(headersPath).then(headers => {
         log.trace('Headers parsed:', headers);
         Headers = headers;
-        xlsxGen = new xlsxGenerator(XLSXFILENAME, headers);
-        return fileUtils.loadFileList(FILESPATH, FILETYPE);
+        xlsxGen = new xlsxGenerator(XLSXFilename, headers);
+        return fileUtils.loadFileList(filesPath, FILETYPE);
     })
         .then(processFileList)
         .then(() => {
@@ -56,6 +62,5 @@ function processFileList(fileList) {
     });
     return Promise.all(allPromises);
 }
-
-
 start();
+exports.start = start;
