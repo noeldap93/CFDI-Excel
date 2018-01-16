@@ -17,26 +17,26 @@ function readFile(file) {
 
 function getHeadersFromFile(path) {
     return readFile(path).then((data) => {
-        let header = {
-            headers : [],
+        let headers = {
+            headers: [],
             order: { column: -1, ascending: true }
         }
         //parsing....
         let headersData = data.split("\n");
 
-        header.headers = headersData.map((header, position) => {
+        headers.headers = headersData.map((header, position) => {
             
             header = header.trim().replace(/\s\s+/g, ' ');
             let splitHeaders = header.split(" ");
             if (splitHeaders[1] == 'ordenar') {
-                header.order.column = position;
+                headers.order.column = position;
             }
             if (splitHeaders[2] == 'descendente') {
-                header.order.ascending = false;
+                headers.order.ascending = false;
             }
             return splitHeaders[0];
         });
-        return header;
+        return headers;
 
     });
 };
