@@ -7,7 +7,6 @@ const XLSX_FILE_NAME_DAFAULT = 'output.xlsx'
 
 let fileUtils = require('./fileUtils.js');
 let getHeadersFromFile = require('./getHeadersFromFile.js');
-let getRow = require('./getRow.js');
 let xlsxGenerator = require('./xlsxGenerator').xlsxGenerator;
 let Headers;
 let xlsxGen;
@@ -39,6 +38,13 @@ function start(filesPath, headersPath, XLSXFilename) {
         })
 
 }
+function getRow(dataFile) {
+    let CFDI = new CFDIparse();
+    return CFDI.load(dataFile).then((result) => {
+        log.info("expected values according to headers", CFDI.getRow(Headers.headers));
+        return CFDI.getRow(Headers.headers);
+    });
+}
 
 function processFileList(fileList) {
     log.trace("Starting fileList Processing:", fileList);
@@ -46,9 +52,8 @@ function processFileList(fileList) {
         log.trace("Starting process with:", file);
         return fileUtils.readFile(file).then(dataFile => {
             log.trace("Finished file read:", file, "size:", dataFile.length);
-            return getRow(Headers.headers, dataFile);
-        }, (e) => { log.warn(e); }).then(row => {
-            log.trace("Finished parsing row:", file, "data:", row);
+            return getRow(dataFile);
+        }).then((row) => {
             xlsxGen.add(row);
         }).catch((e) => {
             log.warn("File %s cant be parsed.", file, e);
