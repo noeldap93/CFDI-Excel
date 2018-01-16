@@ -1,7 +1,7 @@
 let fs = require("fs");
 let expect = require("chai").expect;
 let CFDIParser = require("../src/CFDI.parse").CFDIParser;
-let CFDItext = fs.readFileSync('./data/oxxo.xml');
+let CFDItext = fs.readFileSync('./test/data/oxxo.xml');
 
 let headers = [
     "FECHA",
@@ -17,7 +17,7 @@ let arrayTest = [
     'CCO8605231N4',
     'CADENA COMERCIAL OXXO, S.A. DE C.V.'
 ];
-describe.only("CFDI Parser", () => {
+describe("CFDI Parser", () => {
     let cfdiParser = new CFDIParser();
     it("Must load xml test without errors", (done) => {
         cfdiParser.load(CFDItext).then((result) => {
