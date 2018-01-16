@@ -10,7 +10,7 @@ class CFDIParser {
         this.receptor;
         this.impuestos;
     }
-
+    
     load(CFDItext) {
         let promise = new Promise((resolve, reject) => {
             parseString(CFDItext, (error, result) => {
@@ -28,11 +28,16 @@ class CFDIParser {
                 log.debug("emisor", this.emisor);
                 log.debug("receptor", this.receptor);
                 log.debug("impuestos", this.impuestos);
-                
+
                 resolve(result);
             });
         });
         return promise;
+    }
+
+    getRow(headers) {
+        let rowArray = headers.map((header) => this.get(header));
+        return rowArray;
     }
 
     _GET_FECHA() {

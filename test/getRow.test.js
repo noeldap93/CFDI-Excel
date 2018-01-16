@@ -2,13 +2,7 @@ let fs = require('fs');
 let expect = require("chai").expect;
 let getRow = require("../src/getRow");
 let XMLText = fs.readFileSync('./data/oxxo.xml');
-let headers = [
-    "FECHA",
-    "SUBTOTAL",
-    "TOTAL",
-    "RFC_EMISOR",
-    "NOMBRE_EMISOR"
-];
+
 let arrayTest = [
     '2017-01-09T21:50:16',
     92.71,
