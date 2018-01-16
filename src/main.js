@@ -5,6 +5,7 @@ const FILETYPE = '.xml';
 const HEADERS_PATH_DEFAULT = './headers.txt'
 const XLSX_FILE_NAME_DAFAULT = 'output.xlsx'
 
+let CFDIparse = require('./CFDI.parse.js');
 let fileUtils = require('./fileUtils.js');
 let getHeadersFromFile = require('./getHeadersFromFile.js');
 let xlsxGenerator = require('./xlsxGenerator').xlsxGenerator;
@@ -61,5 +62,5 @@ function processFileList(fileList) {
     });
     return Promise.all(allPromises);
 }
-
+start();
 exports.start = start;
