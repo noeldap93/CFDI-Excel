@@ -18,20 +18,21 @@ function readFile(file) {
 function getHeadersFromFile(path) {
     return readFile(path).then((data) => {
         let headers = {
-            header: [],
-            order: { column: -1, ascendig: true }
+            headers: [],
+            order: { column: -1, ascending: true }
         }
         //parsing....
         let headersData = data.split("\n");
 
-        headers.header = headersData.map((header, position) => {
-            header = header.replace(/\s\s+/g, ' ');
+        headers.headers = headersData.map((header, position) => {
+            
+            header = header.trim().replace(/\s\s+/g, ' ');
             let splitHeaders = header.split(" ");
             if (splitHeaders[1] == 'ordenar') {
                 headers.order.column = position;
             }
             if (splitHeaders[2] == 'descendente') {
-                headers.order.ascendig = false;
+                headers.order.ascending = false;
             }
             return splitHeaders[0];
         });
