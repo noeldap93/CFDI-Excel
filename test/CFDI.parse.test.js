@@ -1,7 +1,7 @@
 let fs = require("fs");
 let expect = require("chai").expect;
 let CFDIParser = require("../src/CFDI.parse").CFDIParser;
-let CFDItext = fs.readFileSync('./data/oxxo.xml');
+let CFDItext = fs.readFileSync('./test/data/oxxo.xml');
 
 describe("CFDI Parser", () => {
     let cfdiParser = new CFDIParser();

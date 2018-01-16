@@ -1,8 +1,8 @@
 const getLogger = require('./logger');
 const log = getLogger('main');
-const FILESPATH = './data';
+const FILESPATH = './test/data';
 const FILETYPE = '.xml';
-const HEADERSPATH = './data/Headers_ex2.txt'
+const HEADERSPATH = './test/data/Headers_ex2.txt'
 const XLSXFILENAME = 'excel.xlsx'
 
 let fileUtils = require('./fileUtils.js');

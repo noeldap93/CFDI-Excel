@@ -1,7 +1,7 @@
 let fs = require('fs');
 let expect = require("chai").expect;
 let getRow = require("../src/getRow");
-let XMLText = fs.readFileSync('./data/oxxo.xml');
+let XMLText = fs.readFileSync('./test/data/oxxo.xml');
 let headers = [
     "FECHA",
     "SUBTOTAL",
