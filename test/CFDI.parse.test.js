@@ -5,11 +5,14 @@ let CFDItext = fs.readFileSync('./data/oxxo.xml');
 
 describe("CFDI Parser", () => {
     let cfdiParser = new CFDIParser();
-    it("Must load xml test without errors", () => {
-        cfdiParser.load(CFDItext);
+    it("Must load xml test without errors", (done) => {
+        cfdiParser.load(CFDItext).then((result) => {
+            expect(result).to.be.string;
+            done();
+        });
     });
-    describe("Check that the values are numbers",()=>{
-        it("Type of should be a number",()=>{
+    describe("Check that the values are numbers", () => {
+        it("Type of should be a number", () => {
             expect(cfdiParser.get("SUBTOTAL")).to.be.a('number');
             expect(cfdiParser.get("TOTAL")).to.be.a('number');
             expect(cfdiParser.get("DESCUENTO")).to.be.a('number');

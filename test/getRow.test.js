@@ -17,8 +17,11 @@ let arrayTest = [
     'CADENA COMERCIAL OXXO, S.A. DE C.V.'
 ];
 describe("Return the values in the correct order:", () => {
-    let row = getRow(headers,XMLText);
-    it("The row must contain the data in this order: FECHA,SUBTOTAL,TOTAL, RFC_EMISOR,NOMBRE_EMISOR", () => {
-        expect(row).to.deep.equal(arrayTest);
+    it("The row must contain the data in this order: FECHA,SUBTOTAL,TOTAL, RFC_EMISOR,NOMBRE_EMISOR", (done) => {
+        getRow(headers, XMLText).then((row) => {
+            expect(row).to.deep.equal(arrayTest);
+            done();
+        }).catch(done);
+
     });
 });
