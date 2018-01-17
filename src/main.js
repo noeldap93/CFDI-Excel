@@ -1,9 +1,6 @@
 const getLogger = require('./logger');
 const log = getLogger('main');
-const FILES_PATH_DEFAULT = './test/data';
 const FILETYPE = '.xml';
-const HEADERS_PATH_DEFAULT = './headers.txt'
-const XLSX_FILE_NAME_DAFAULT = 'output.xlsx'
 
 let CFDIparse = require('./CFDI.parse.js');
 let fileUtils = require('./fileUtils.js');
@@ -13,10 +10,6 @@ let Headers;
 let xlsxGen;
 
 function start(filesPath, headersPath, XLSXFilename) {
-
-    filesPath = filesPath || FILES_PATH_DEFAULT;
-    headersPath = headersPath || HEADERS_PATH_DEFAULT;
-    XLSXFilename = XLSXFilename || XLSX_FILE_NAME_DAFAULT;
 
     getHeadersFromFile(headersPath).then(headers => {
         log.trace('Headers parsed:', headers);
