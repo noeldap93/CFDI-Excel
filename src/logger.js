@@ -18,6 +18,7 @@ let log = log4js.getLogger("logger");
 try {
   logger_levels = require('../logger.levels.json');
 } catch (e) {
+  logger_levels = { };
   log.warn("Can't load local logger.levels.json (probably doesn't exist.)", e)
 }
 
