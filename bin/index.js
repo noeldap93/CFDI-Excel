@@ -3,7 +3,7 @@
 let main = require('../src/main.js');
 let parametros = process.argv;
 
-const FILES_PATH_DEFAULT = './test/data';
+const FILES_PATH_DEFAULT = './';
 const HEADERS_PATH_DEFAULT = './headers.txt'
 const XLSX_FILE_NAME_DEFAULT = 'output.xlsx'
 
