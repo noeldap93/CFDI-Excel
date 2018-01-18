@@ -3,9 +3,9 @@
 let main = require('../src/main.js');
 let parametros = process.argv;
 
-const FILES_PATH_DEFAULT = './test/data';
-const HEADERS_PATH_DEFAULT = './headers.txt'
-const XLSX_FILE_NAME_DEFAULT = 'output.xlsx'
+const FILES_PATH_DEFAULT = './';
+const HEADERS_PATH_DEFAULT = './headers.txt';
+const XLSX_FILE_NAME_DEFAULT = 'output.xlsx';
 
 /* labels para parametros 
 directorio de archivos xml    '--fdir='
@@ -26,5 +26,4 @@ let XLSXFilename = defineParameters("--output=");
 filesPath = filesPath || FILES_PATH_DEFAULT;
 headersPath = headersPath || HEADERS_PATH_DEFAULT;
 XLSXFilename = XLSXFilename || XLSX_FILE_NAME_DEFAULT;
-console.log(XLSXFilename);
 main.start(filesPath, headersPath, XLSXFilename); 
