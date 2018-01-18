@@ -25,10 +25,12 @@ function start(filesPath, headersPath, XLSXFilename) {
 
         }).then(ok => {
             log.debug('File saved');
+            console.log("Se genero el archivo Xlsx:", XLSXFilename);
             return ok;
         })
         .catch(err => {
             log.fatal("Error:", err);
+            console.log("Error al generar un archivo");
         })
 
 }
@@ -55,5 +57,5 @@ function processFileList(fileList) {
     });
     return Promise.all(allPromises);
 }
-start();
+
 exports.start = start;
