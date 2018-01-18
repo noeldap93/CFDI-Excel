@@ -26,5 +26,5 @@ let XLSXFilename = defineParameters("--output=");
 filesPath = filesPath || FILES_PATH_DEFAULT;
 headersPath = headersPath || HEADERS_PATH_DEFAULT;
 XLSXFilename = XLSXFilename || XLSX_FILE_NAME_DEFAULT;
-console.log(XLSXFilename);
 main.start(filesPath, headersPath, XLSXFilename); 
+console.log("Se genero el archivo Xlsx:",XLSXFilename);
