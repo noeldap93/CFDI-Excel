@@ -1,3 +1,0 @@
-RFC_EMISOR    
-FECHA     ordenar
-TOTAL    

@@ -6,6 +6,10 @@
   "scripts": {
     "test": "mocha"
   },
+  "bin": {
+    "cfdi2excel": "./bin/index.js"
+  },
+  "preferGlobal": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/noeldap93/CFDI-Excel.git"
