@@ -4,8 +4,8 @@ let main = require('../src/main.js');
 let parametros = process.argv;
 
 const FILES_PATH_DEFAULT = './';
-const HEADERS_PATH_DEFAULT = './headers.txt'
-const XLSX_FILE_NAME_DEFAULT = 'output.xlsx'
+const HEADERS_PATH_DEFAULT = './headers.txt';
+const XLSX_FILE_NAME_DEFAULT = 'output.xlsx';
 
 /* labels para parametros 
 directorio de archivos xml    '--fdir='
@@ -27,4 +27,3 @@ filesPath = filesPath || FILES_PATH_DEFAULT;
 headersPath = headersPath || HEADERS_PATH_DEFAULT;
 XLSXFilename = XLSXFilename || XLSX_FILE_NAME_DEFAULT;
 main.start(filesPath, headersPath, XLSXFilename); 
-console.log("Se genero el archivo Xlsx:",XLSXFilename);

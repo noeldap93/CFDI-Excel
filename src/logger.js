@@ -7,9 +7,9 @@ log4js.configure(logger_config);
 log4js.configuration = logger_config;
 
 process.on('uncaughtException', function (err) {
-  console.log("Error al generar un archivo");
   log4js.getLogger("uncaughtException").error(err.name, err.message, "\n", err.stack);
   if (typeof global.it !== 'function') { // if not running mocha should exit.
+    console.log("Error del programa");
     log4js.shutdown(function () { process.exit(1); });
   }
 });
